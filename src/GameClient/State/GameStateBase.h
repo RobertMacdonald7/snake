@@ -11,6 +11,7 @@ namespace GameClient::State
 	{
 	private:
 		std::list<std::shared_ptr<Engine::IDrawable>> _drawables = {};
+		std::list<std::shared_ptr<Engine::IDrawable>> _uiDrawables = {};
 
 	public:
 		~GameStateBase() override = default;
@@ -21,6 +22,8 @@ namespace GameClient::State
 		void OnUpdate(IStateMachine& context) override;
 		void OnInput(IStateMachine& context, Input::Input input) override;
 		std::list<std::shared_ptr<Engine::IDrawable>>& GetDrawables() override;
+		std::list<std::shared_ptr<GameClient::Engine::IDrawable>>& GetUIDrawables() override;
+		int GetScore() override;
 
 	protected:
 		GameStateBase() = default;

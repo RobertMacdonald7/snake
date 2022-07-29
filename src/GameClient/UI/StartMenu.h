@@ -5,15 +5,15 @@
 #include "../Engine/IDrawable.h"
 #include "../Input/Input.h"
 #include "../State/IStateMachine.h"
-#include "UIControls/Button.h"
+#include "Controls/Button.h"
 
-namespace GameClient::GameObjects
+namespace GameClient::UI
 {
 	class StartMenu final : public Engine::IDrawable
 	{
 	private:
-		std::unique_ptr<UIControls::Button> _startButton = nullptr;
-		std::unique_ptr<UIControls::Button> _exitButton = nullptr;
+		std::unique_ptr<Controls::Button> _startButton = nullptr;
+		std::unique_ptr<Controls::Button> _exitButton = nullptr;
 
 	public:
 		StartMenu();

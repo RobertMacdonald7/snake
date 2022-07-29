@@ -8,11 +8,13 @@ namespace GameClient::Engine
 	enum class Colour
 	{
 		White,
+		WhiteAlpha,
 		Gray,
 		DarkRed,
 		Green,
 		Blue,
 		Black,
+		BlackAlpha,
 		Last // Used for detecting the end of iteration!
 	};
 }

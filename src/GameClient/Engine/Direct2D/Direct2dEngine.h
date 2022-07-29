@@ -5,6 +5,7 @@
 #include <map>
 
 #include "../IEngine.h"
+#include "../TextAlignment.h"
 
 #pragma comment(lib, "d2d1")
 #pragma comment(lib, "Dwrite")
@@ -19,7 +20,8 @@ namespace GameClient::Engine::Direct2D
 	private:
 		ID2D1Factory* _pDirect2dFactory = nullptr;
 		IDWriteFactory* _pDWriteFactory = nullptr;
-		IDWriteTextFormat* _pTextFormat = nullptr;
+
+		std::map<TextAlignment, IDWriteTextFormat*> _textFormats = {};
 
 		ID2D1HwndRenderTarget* _pRenderTarget = nullptr;
 		std::map<Colour, ID2D1SolidColorBrush*> _brushes = {};
@@ -72,7 +74,7 @@ namespace GameClient::Engine::Direct2D
 		/**
 		 * \copydoc IRender::DrawString
 		 */
-		void DrawString(const std::wstring& text, Coordinate2d location, Size size, Colour colour) override;
+		void DrawString(const std::wstring& text, Coordinate2d location, Size size, Colour colour, TextAlignment alignment) override;
 
 	private:
 		/**

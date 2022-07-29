@@ -1,5 +1,5 @@
 #pragma once
 
 #include "Playing.h"
-#include "GameOver.h"
+#include "GameOverState.h"
 #include "StartMenuState.h"

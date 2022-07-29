@@ -52,11 +52,17 @@
     <Filter Include="Header Files\Engine\Direct2D">
       <UniqueIdentifier>{7cee228b-9b8e-491c-9e47-9ff09e6b7ef5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\GameObjects\UIControls">
-      <UniqueIdentifier>{317a4c5e-0261-48bf-bac5-7456100078d7}</UniqueIdentifier>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{32cb186c-8a34-4ce6-89e6-3fe3093bc051}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\GameObjects\UIControls">
+    <Filter Include="Source Files\UI\Controls">
       <UniqueIdentifier>{a15481cd-edd5-410a-adeb-263b58359c31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{d9e9eb36-7f9b-4cc8-831e-5bf9030cd058}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI\Controls">
+      <UniqueIdentifier>{317a4c5e-0261-48bf-bac5-7456100078d7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -93,7 +99,7 @@
     <ClInclude Include="State\GameStateMachine.h">
       <Filter>Header Files\State</Filter>
     </ClInclude>
-    <ClInclude Include="State\GameOver.h">
+    <ClInclude Include="State\GameOverState.h">
       <Filter>Header Files\State</Filter>
     </ClInclude>
     <ClInclude Include="State\GameStateBase.h">
@@ -156,11 +162,23 @@
     <ClInclude Include="State\StartMenuState.h">
       <Filter>Header Files\State</Filter>
     </ClInclude>
-    <ClInclude Include="GameObjects\StartMenu.h">
-      <Filter>Header Files\GameObjects</Filter>
+    <ClInclude Include="UI\Controls\Button.h">
+      <Filter>Header Files\UI\Controls</Filter>
     </ClInclude>
-    <ClInclude Include="GameObjects\UIControls\Button.h">
-      <Filter>Header Files\GameObjects\UIControls</Filter>
+    <ClInclude Include="UI\StartMenu.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Scoreboard.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Controls\Label.h">
+      <Filter>Header Files\UI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Score.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\TextAlignment.h">
+      <Filter>Header Files\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -185,7 +203,7 @@
     <ClCompile Include="State\GameStateBase.cpp">
       <Filter>Source Files\State</Filter>
     </ClCompile>
-    <ClCompile Include="State\GameOver.cpp">
+    <ClCompile Include="State\GameOverState.cpp">
       <Filter>Source Files\State</Filter>
     </ClCompile>
     <ClCompile Include="GameObjects\PlayArea.cpp">
@@ -209,14 +227,23 @@
     <ClCompile Include="GameObjects\Collision\CollidableBase.cpp">
       <Filter>Source Files\GameObjects\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="GameObjects\StartMenu.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="State\StartMenuState.cpp">
       <Filter>Source Files\State</Filter>
     </ClCompile>
-    <ClCompile Include="GameObjects\UIControls\Button.cpp">
-      <Filter>Source Files\GameObjects\UIControls</Filter>
+    <ClCompile Include="UI\Controls\Button.cpp">
+      <Filter>Source Files\UI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\StartMenu.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Scoreboard.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Controls\Label.cpp">
+      <Filter>Source Files\UI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Score.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

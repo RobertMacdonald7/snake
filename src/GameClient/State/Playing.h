@@ -1,6 +1,7 @@
 #pragma once
 #include "GameStateBase.h"
 #include "../GameObjects/GameObjects.h"
+#include "../UI/Score.h"
 
 namespace GameClient::State
 {
@@ -10,22 +11,17 @@ namespace GameClient::State
 	class Playing final : public GameStateBase
 	{
 	private:
-		std::shared_ptr<GameObjects::PlayArea> _playArea;
-		std::shared_ptr<GameObjects::Food> _food;
-		std::shared_ptr<GameObjects::Snake> _snake;
+		std::shared_ptr<GameObjects::PlayArea> _playArea = nullptr;
+		std::shared_ptr<GameObjects::Food> _food = nullptr;
+		std::shared_ptr<GameObjects::Snake> _snake = nullptr;
+		std::shared_ptr<UI::Score> _score = nullptr;
 
 		bool _blockInputUntilNextUpdate = false;
 		Input::Input _cachedInput = Input::Input::None;
 
 	public:
-		explicit Playing();
-		~Playing() override = default;
-
-		Playing(Playing& copyOther) = delete;
-		Playing operator=(Playing& copyOther) = delete;
-
-		Playing operator=(Playing&& moveOther) = delete;
-		Playing(Playing&& moveOther) = delete;
+		explicit Playing(std::shared_ptr<UI::Score> score);
+		Playing() = delete;
 
 		/**
 		 * \copydoc GameStateBase::GetType
@@ -51,5 +47,10 @@ namespace GameClient::State
 		 * \copydoc GameStateBase::OnInput
 		 */
 		void OnInput(IStateMachine& context, Input::Input input) override;
+
+		/**
+		 * \copydoc GameStateBase::GetScore
+		 */
+		int GetScore() override;
 	};
 }

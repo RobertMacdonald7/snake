@@ -1,9 +1,9 @@
 #include "StartMenuState.h"
 
-GameClient::State::StartMenuState::StartMenuState(std::shared_ptr<GameObjects::StartMenu> menu) :
+GameClient::State::StartMenuState::StartMenuState(std::shared_ptr<UI::StartMenu> menu) :
 	_menu(std::move(menu))
 {
-	GameStateBase::GetDrawables().push_back(_menu);
+	GameStateBase::GetUIDrawables().push_back(_menu);
 }
 
 GameClient::State::GameStateType GameClient::State::StartMenuState::GetType()
@@ -19,11 +19,6 @@ void GameClient::State::StartMenuState::Enter(const std::shared_ptr<IGameState> 
 void GameClient::State::StartMenuState::Leave()
 {
 	GameStateBase::Leave();
-}
-
-void GameClient::State::StartMenuState::OnUpdate(IStateMachine& context)
-{
-	_menu->OnUpdate(context);
 }
 
 void GameClient::State::StartMenuState::OnInput(IStateMachine& context, const Input::Input input)

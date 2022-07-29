@@ -5,6 +5,7 @@
 #include "Colour.h"
 #include "Coordinate2d.h"
 #include "Size.h"
+#include "TextAlignment.h"
 
 namespace GameClient::Engine
 {
@@ -58,7 +59,9 @@ namespace GameClient::Engine
 		 * \param location The top,left location of the text's rectangle.
 		 * \param size The size of the text's rectangle.
 		 * \param colour The text's colour.
+		 * \param alignment The text alignment.
 		 */
-		virtual void DrawString(const std::wstring& text, Coordinate2d location, Size size, Colour colour) = 0;
+		virtual void DrawString(const std::wstring& text, Coordinate2d location, Size size, Colour colour,
+								TextAlignment alignment) = 0;
 	};
 }

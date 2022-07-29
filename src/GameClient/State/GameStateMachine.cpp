@@ -22,10 +22,13 @@ void GameClient::State::GameStateMachine::OnUpdate()
 	_currentState->OnUpdate(*this);
 }
 
-std::list<std::shared_ptr<GameClient::Engine::IDrawable>>&
+std::list<std::shared_ptr<GameClient::Engine::IDrawable>>
 GameClient::State::GameStateMachine::GetDrawableEntities() const
 {
-	return _currentState->GetDrawables();
+	std::list<std::shared_ptr<Engine::IDrawable>> drawables = { };
+	drawables.insert(drawables.end(), _currentState->GetDrawables().begin(), _currentState->GetDrawables().end());
+	drawables.insert(drawables.end(), _currentState->GetUIDrawables().begin(), _currentState->GetUIDrawables().end());
+	return drawables;
 }
 
 void GameClient::State::GameStateMachine::ChangeState(const int state)

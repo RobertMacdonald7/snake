@@ -1,7 +1,5 @@
 #include "Game.h"
 
-#include <string>
-
 #include "State/GameStateMachine.h"
 
 GameClient::Game::Game(std::unique_ptr<Engine::IEngine> engine, std::unique_ptr<State::GameStateMachine> stateMachine):

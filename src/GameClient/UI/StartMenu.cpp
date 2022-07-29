@@ -4,10 +4,10 @@
 #include "../State/GameStateType.h"
 #include "../Macros.h"
 
-GameClient::GameObjects::StartMenu::StartMenu()
+GameClient::UI::StartMenu::StartMenu()
 {
-	_startButton = std::make_unique<UIControls::Button>();
-	_exitButton = std::make_unique<UIControls::Button>();
+	_startButton = std::make_unique<Controls::Button>();
+	_exitButton = std::make_unique<Controls::Button>();
 
 	_startButton->text = L"Start";
 	_startButton->size = {300, 100};
@@ -24,7 +24,7 @@ GameClient::GameObjects::StartMenu::StartMenu()
 		game_height_pixels * 2 / 3 - _exitButton->size.height / 2};
 }
 
-void GameClient::GameObjects::StartMenu::OnInput(State::IStateMachine& context, const Input::Input input) const
+void GameClient::UI::StartMenu::OnInput(State::IStateMachine& context, const Input::Input input) const
 {
 	switch (input)
 	{
@@ -48,12 +48,7 @@ void GameClient::GameObjects::StartMenu::OnInput(State::IStateMachine& context, 
 	}
 }
 
-void GameClient::GameObjects::StartMenu::OnUpdate(State::IStateMachine& context)
-{
-	/* NO OP */
-}
-
-void GameClient::GameObjects::StartMenu::Draw(Engine::IRender& renderEngine)
+void GameClient::UI::StartMenu::Draw(Engine::IRender& renderEngine)
 {
 	_startButton->Draw(renderEngine);
 	_exitButton->Draw(renderEngine);

@@ -32,6 +32,8 @@ HRESULT GameClient::Engine::Direct2D::Direct2dEngine::Initialize()
 	);
 	RETURN_FAILED_HRESULT(result);
 
+	// TODO - move these into some other place responsible for creating all available text formats. Potentially lazy?
+	IDWriteTextFormat* centerFormat;
 	result = _pDWriteFactory->CreateTextFormat(
 		L"",
 		nullptr,
@@ -40,15 +42,38 @@ HRESULT GameClient::Engine::Direct2D::Direct2dEngine::Initialize()
 		DWRITE_FONT_STRETCH_NORMAL,
 		50.0f,
 		L"en-us",
-		&_pTextFormat
+		&centerFormat
 	);
 	RETURN_FAILED_HRESULT(result);
 
-	result = _pTextFormat->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
+	result = centerFormat->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
 	RETURN_FAILED_HRESULT(result);
 
-	result = _pTextFormat->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_CENTER);
+	result = centerFormat->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_CENTER);
 	RETURN_FAILED_HRESULT(result);
+
+	_textFormats[TextAlignment::Center] = centerFormat;
+
+	IDWriteTextFormat* topRightFormat;
+	result = _pDWriteFactory->CreateTextFormat(
+		L"",
+		nullptr,
+		DWRITE_FONT_WEIGHT_REGULAR,
+		DWRITE_FONT_STYLE_NORMAL,
+		DWRITE_FONT_STRETCH_NORMAL,
+		50.0f,
+		L"en-us",
+		&topRightFormat
+	);
+	RETURN_FAILED_HRESULT(result);
+
+	result = topRightFormat->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_TRAILING);
+	RETURN_FAILED_HRESULT(result);
+
+	result = topRightFormat->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_NEAR);
+	RETURN_FAILED_HRESULT(result);
+
+	_textFormats[TextAlignment::TopRight] = topRightFormat;
 
 	return result;
 }
@@ -133,7 +158,7 @@ void GameClient::Engine::Direct2D::Direct2dEngine::DrawLine(const Coordinate2dF 
 	_pRenderTarget->DrawLine(d2Point0, d2Point1, _brushes[colour], strokeWidth);
 }
 
-void GameClient::Engine::Direct2D::Direct2dEngine::DrawString(const std::wstring& text, const Coordinate2d location, const Size size, const Colour colour)
+void GameClient::Engine::Direct2D::Direct2dEngine::DrawString(const std::wstring& text, const Coordinate2d location, const Size size, const Colour colour, const TextAlignment alignment)
 {
 	const auto textLength = static_cast<UINT32>(text.length());
 	const D2D1_RECT_F layoutRect = D2D1::RectF(
@@ -142,7 +167,7 @@ void GameClient::Engine::Direct2D::Direct2dEngine::DrawString(const std::wstring
 		static_cast<float>(location.x + size.width),
 		static_cast<float>(location.y + size.height)
 	);
-	_pRenderTarget->DrawTextW(text.data(), textLength, _pTextFormat, layoutRect, _brushes[colour]);
+	_pRenderTarget->DrawTextW(text.data(), textLength, _textFormats[alignment], layoutRect, _brushes[colour]);
 }
 
 HRESULT GameClient::Engine::Direct2D::Direct2dEngine::CreateDeviceResources()
@@ -181,7 +206,12 @@ HRESULT GameClient::Engine::Direct2D::Direct2dEngine::CreateDeviceResources()
 
 void GameClient::Engine::Direct2D::Direct2dEngine::DiscardDeviceIndependentResources()
 {
-	SafeRelease(&_pTextFormat);
+	for (auto& [_, format] : _textFormats)
+	{
+		SafeRelease(&format);
+	}
+	_textFormats.clear();
+
 	SafeRelease(&_pDWriteFactory);
 	SafeRelease(&_pDirect2dFactory);
 }

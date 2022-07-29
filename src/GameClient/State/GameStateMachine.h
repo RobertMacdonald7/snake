@@ -44,6 +44,6 @@ namespace GameClient::State
 		 * \brief Gets the IDrawable objects.
 		 * \return A list of IDrawables.
 		 */
-		[[nodiscard]] std::list<std::shared_ptr<Engine::IDrawable>>& GetDrawableEntities() const;
+		[[nodiscard]] std::list<std::shared_ptr<Engine::IDrawable>> GetDrawableEntities() const;
 	};
 }

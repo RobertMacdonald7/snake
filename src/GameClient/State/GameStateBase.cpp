@@ -24,3 +24,13 @@ std::list<std::shared_ptr<GameClient::Engine::IDrawable>>& GameClient::State::Ga
 {
 	return _drawables;
 }
+
+std::list<std::shared_ptr<GameClient::Engine::IDrawable>>& GameClient::State::GameStateBase::GetUIDrawables()
+{
+	return _uiDrawables;
+}
+
+int GameClient::State::GameStateBase::GetScore()
+{
+	return -1;
+}

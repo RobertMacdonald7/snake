@@ -90,7 +90,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="GameObjects\UIControls\Button.h" />
+    <ClInclude Include="Engine\TextAlignment.h" />
+    <ClInclude Include="UI\Score.h" />
+    <ClInclude Include="UI\Controls\Label.h" />
+    <ClInclude Include="UI\Scoreboard.h" />
+    <ClInclude Include="UI\Controls\Button.h" />
     <ClInclude Include="GameObjects\Collision\CollidableBase.h" />
     <ClInclude Include="Engine\Colour.h" />
     <ClInclude Include="Engine\Direct2D\Direct2dColour.h" />
@@ -98,7 +102,7 @@
     <ClInclude Include="GameObjects\GameObjects.h" />
     <ClInclude Include="Engine\Coordinate2d.h" />
     <ClInclude Include="Engine\IRender.h" />
-    <ClInclude Include="GameObjects\StartMenu.h" />
+    <ClInclude Include="UI\StartMenu.h" />
     <ClInclude Include="State\StartMenuState.h" />
     <ClInclude Include="State\IStateMachine.h" />
     <ClInclude Include="State\GameStates.h" />
@@ -109,7 +113,7 @@
     <ClInclude Include="GameObjects\Food.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameDefinitions.h" />
-    <ClInclude Include="State\GameOver.h" />
+    <ClInclude Include="State\GameOverState.h" />
     <ClInclude Include="State\GameStateBase.h" />
     <ClInclude Include="State\GameStateMachine.h" />
     <ClInclude Include="State\GameStateType.h" />
@@ -126,16 +130,19 @@
     <ClInclude Include="Macros.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameObjects\UIControls\Button.cpp" />
+    <ClCompile Include="UI\Score.cpp" />
+    <ClCompile Include="UI\Controls\Label.cpp" />
+    <ClCompile Include="UI\Scoreboard.cpp" />
+    <ClCompile Include="UI\Controls\Button.cpp" />
     <ClCompile Include="Engine\Direct2D\Direct2dColour.cpp" />
     <ClCompile Include="GameObjects\Collision\CollidableBase.cpp" />
     <ClCompile Include="GameObjects\Collision\CollisionDetector.cpp" />
-    <ClCompile Include="GameObjects\StartMenu.cpp" />
+    <ClCompile Include="UI\StartMenu.cpp" />
     <ClCompile Include="State\StartMenuState.cpp" />
     <ClCompile Include="Utility\Direct2dUtility.cpp" />
     <ClCompile Include="GameObjects\Food.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="State\GameOver.cpp" />
+    <ClCompile Include="State\GameOverState.cpp" />
     <ClCompile Include="State\GameStateBase.cpp" />
     <ClCompile Include="State\GameStateMachine.cpp" />
     <ClCompile Include="GameObjects\PlayArea.cpp" />

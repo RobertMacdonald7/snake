@@ -51,5 +51,17 @@ namespace GameClient::State
 		 * \return A list of IDrawables.
 		 */
 		virtual std::list<std::shared_ptr<Engine::IDrawable>>& GetDrawables() = 0;
+
+		/**
+		 * \brief Gets the UI IDrawable objects.
+		 * \return A list of IDrawables.
+		 */
+		virtual std::list<std::shared_ptr<GameClient::Engine::IDrawable>>& GetUIDrawables() = 0;
+
+		/**
+		 * \brief Gets the current score of the game.
+		 * \return The score. -1 if no score is available.
+		 */
+		virtual int GetScore() = 0;
 	};
 }

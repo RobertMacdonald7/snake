@@ -93,6 +93,11 @@ void GameClient::GameObjects::Snake::Reset()
 	_growSnake = 0;
 }
 
+int GameClient::GameObjects::Snake::GetScore() const
+{
+	return static_cast<int>(_segments.size() - _initialSize);
+}
+
 void GameClient::GameObjects::Snake::Draw(Engine::IRender& renderEngine)
 {
 	// Draw simple squares for each snake segment
@@ -179,6 +184,8 @@ void GameClient::GameObjects::Snake::CreatePlayer()
 		auto segment = Engine::Coordinate2d{x, game_height_units / 2};
 		_segments.push_back(segment);
 	}
+
+	_initialSize = _segments.size();
 }
 
 bool GameClient::GameObjects::Snake::IsColliding(const int x, const int y, Collision::CollidableName source)

@@ -32,6 +32,7 @@ namespace GameClient::GameObjects
 
 		bool _growNextUpdate = false;
 		int _growSnake = 0;
+		size_t _initialSize;
 
 	public:
 		explicit Snake(std::shared_ptr<Collision::CollisionDetector> collisionDetector);
@@ -61,6 +62,11 @@ namespace GameClient::GameObjects
 		 * \brief Reset's the snake to default values.
 		 */
 		void Reset();
+
+		/**
+		 * \brief Gets the current score.
+		 */
+		[[nodiscard]] int GetScore() const;
 
 		/**
 		 * \copydoc Engine::IDrawable::Draw

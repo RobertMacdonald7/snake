@@ -1,14 +1,21 @@
 #pragma once
 #include "GameStateBase.h"
+#include "../UI/Scoreboard.h"
 
 namespace GameClient::State
 {
 	/**
 	 * \brief Defines the IGameState when the game is over, and the player cannot move the snake anymore.
 	 */
-	class GameOver final : public GameStateBase
+	class GameOverState final : public GameStateBase
 	{
+	private:
+		std::shared_ptr<UI::Scoreboard> _scoreboard = nullptr;
+
 	public:
+		explicit GameOverState(std::shared_ptr<UI::Scoreboard> scoreboard);
+		GameOverState() = delete;
+
 		/**
 		 * \copydoc GameStateBase::GetType
 		 */
